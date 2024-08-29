@@ -9,11 +9,11 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #dddfeb;
-            color: #07a0c3; /* Updated text color */
+            color: #07a0c3;
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
-            transition: color 0.3s ease; /* Smooth transition for text color */
+            transition: color 0.3s ease;
         }
         header {
             background-color: #002642;
@@ -22,75 +22,87 @@
             color: #d6d9e7;
             position: relative;
             opacity: 0;
-            animation: fadeIn 2s forwards; /* Fade-in effect */
+            animation: fadeIn 2s forwards;
         }
         header img {
             max-width: 150px;
             height: auto;
         }
         nav {
-            background-color: #002642; /* Dark blue background */
+            background-color: #002642;
             display: flex;
             justify-content: center;
             padding: 15px 0;
-            border-top: 2px solid #c5a47e; /* Top border */
-            border-bottom: 2px solid #c5a47e; /* Bottom border */
+            border-top: 2px solid #c5a47e;
+            border-bottom: 2px solid #c5a47e;
         }
 
         nav a {
-            color: #c5a47e; /* Gold color for text */
+            color: #c5a47e;
             text-decoration: none;
             font-weight: bold;
-            margin: 0 20px; /* Spacing between links */
-            transition: color 0.3s ease, padding 0.3s ease; /* Smooth color and padding transition */
+            margin: 0 20px;
+            transition: color 0.3s ease, padding 0.3s ease;
             padding-bottom: 2px;
         }
 
         nav a:hover {
-            color: #005580; /* Adjust highlight color on hover */
-            padding-bottom: 4px; /* Small padding increase to simulate underline effect */
+            color: #005580;
+            padding-bottom: 4px;
         }
 
         nav a:active {
-            color: #d6d9e7; /* Slightly lighter color when clicked */
+            color: #d6d9e7;
         }
         .hero-section {
             position: relative;
             text-align: center;
-            color: #fff; /* Default text color for the hero section */
-            background-image: url('New Project.png'); /* Replace with your actual background image path */
+            color: #fff;
+            background-image: url('New Project.png'); 
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Make the background image fixed and scrollable */
+            background-attachment: fixed;
             padding: 100px 20px;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for better text visibility */
+            background-color: rgba(0, 0, 0, 0.5);
         }
         .hero-section h1 {
             font-size: 4em;
             margin: 0;
-            color: #00bcd4; /* Bright white for the main heading */
+            color: #00bcd4;
+            opacity: 0;
+            transform: translateX(-50%);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
         }
         .hero-section h2 {
             font-size: 2em;
-            font-weight: bold; /* Make text bold */
+            font-weight: bold;
             margin-top: 20px;
-            color: rgba(43, 142, 212, 0.863); /* Deep teal for the subheading */
+            color: rgba(43, 142, 212, 0.863);
+            opacity: 0;
+            transform: translateX(50%);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
         }
         .hero-section .welcome-message {
             font-size: 1.5em;
             margin-top: 40px;
-            font-weight: bold; /* Make text bold */
-            color: #046383; /* Vibrant orange for the welcome message */
+            font-weight: bold;
+            color: #046383;
+            opacity: 0;
+            transform: translateX(-50%);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
         }
         .hero-section .register-btn {
-            margin-top: 60px; /* Increased space from the text */
+            margin-top: 60px;
             padding: 15px 30px;
-            background-color: #1e88e5; /* Electric blue for the button */
+            background-color: #1e88e5;
             color: #fff;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+            opacity: 0;
+            transform: translateX(50%);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
         }
         .hero-section .register-btn:hover {
             background-color: #005580;
@@ -100,6 +112,11 @@
             padding: 50px 20px;
             background-color: #002642;
             color: #c5a47e;
+            opacity: 0;
+            transform: translateY(50%);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            border: 5px solid #c5a47e; /* Thicker gold-colored box around countdown */
+            border-radius: 10px; /* Rounded corners */
         }
         .countdown-section h2 {
             font-size: 2em;
@@ -109,11 +126,29 @@
             font-size: 1.2em;
             margin-top: 20px;
         }
+
+        /* Golden line style */
+        .golden-line-container {
+            display: flex;
+            justify-content: center;
+            background-color: #002642; /* Match the background color */
+            padding: 20px 0; /* Add some space around the line */
+        }
+        .golden-line {
+            border-bottom: 2px solid #c5a47e; /* Gold color */
+            width: 60%; /* Set the line width to 60% */
+        }
+
         .venue-section {
             text-align: center;
             padding: 50px 20px;
             background-color: #002642;
             color: #c5a47e;
+            opacity: 0;
+            transform: translateY(50%);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            border: 5px solid #c5a47e; /* Thicker gold-colored box around venue */
+            border-radius: 10px; /* Rounded corners */
         }
         .venue-section h2 {
             font-size: 2em;
@@ -124,12 +159,12 @@
             margin-top: 20px;
         }
         footer {
-            background-color: #5869af;
+            background-color: #002642;
             text-align: center;
             padding: 20px;
             color: #fafafa;
         }
-        
+
         /* Fade-in effect */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -161,6 +196,11 @@
         <h2>Countdown to October 1st, 2024</h2>
         <p id="countdown"></p>
     </section>
+
+    <!-- Golden line between Countdown and Venue -->
+    <div class="golden-line-container">
+        <div class="golden-line"></div>
+    </div>
 
     <section class="venue-section">
         <h2>Event Venue</h2>
@@ -194,6 +234,40 @@
 
         setInterval(updateCountdown, 1000); // Update the countdown every second
         updateCountdown(); // Initial call to set countdown immediately
+
+        // Slide-in effects on scroll
+        function handleScroll() {
+            const heroSection = document.querySelector('.hero-section');
+            const countdownSection = document.querySelector('.countdown-section');
+            const venueSection = document.querySelector('.venue-section');
+            const heroPosition = heroSection.getBoundingClientRect().top;
+            const countdownPosition = countdownSection.getBoundingClientRect().top;
+            const venuePosition = venueSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2;
+
+            if (heroPosition < screenPosition) {
+                heroSection.querySelector('h1').style.opacity = '1';
+                heroSection.querySelector('h1').style.transform = 'translateX(0)';
+                heroSection.querySelector('h2').style.opacity = '1';
+                heroSection.querySelector('h2').style.transform = 'translateX(0)';
+                heroSection.querySelector('.welcome-message').style.opacity = '1';
+                heroSection.querySelector('.welcome-message').style.transform = 'translateX(0)';
+                heroSection.querySelector('.register-btn').style.opacity = '1';
+                heroSection.querySelector('.register-btn').style.transform = 'translateX(0)';
+            }
+
+            if (countdownPosition < screenPosition) {
+                countdownSection.style.opacity = '1';
+                countdownSection.style.transform = 'translateY(0)';
+            }
+
+            if (venuePosition < screenPosition) {
+                venueSection.style.opacity = '1';
+                venueSection.style.transform = 'translateY(0)';
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
     </script>
 </body>
 </html>
