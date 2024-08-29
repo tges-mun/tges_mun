@@ -4,7 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrations - TGES MADHAPUR MUN 2024-25</title>
-    <!-- Include your styles and fonts here -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #002642;
+            color: #c5a47e;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #002642;
+            padding: 20px;
+            text-align: center;
+            color: #c5a47e;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInSlideUp 1s forwards;
+        }
+
+        nav {
+            background-color: #002642;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            border-top: 2px solid #c5a47e;
+            border-bottom: 2px solid #c5a47e;
+        }
+
+        nav a {
+            color: #c5a47e;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: color 0.3s ease, padding 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f5d580;
+            padding-bottom: 4px;
+        }
+
+        .container {
+            padding: 50px 20px;
+            text-align: center;
+            color: #c5a47e;
+        }
+
+        .container h2, .container p {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1s forwards;
+        }
+
+        .container h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #c5a47e;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .container p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .register-btn {
+            padding: 15px 30px;
+            background-color: #c5a47e;
+            color: #002642;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .register-btn:hover {
+            background-color: #f5d580;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #002642;
+            text-align: center;
+            padding: 20px;
+            color: #c5a47e;
+            border-top: 2px solid #c5a47e;
+        }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,6 +126,7 @@
     <div class="container">
         <h2>Registrations</h2>
         <p>Register for the MUN 2024 event here. Ensure your spot in the conference!</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDt-PPEDrQzNJoHozDAAiS9Rehn1XsLL4NzkaTNuphBhqF0w/viewform" class="register-btn" target="_blank">Register Now</a>
     </div>
 
     <footer>
