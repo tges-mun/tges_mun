@@ -4,7 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committees - TGES MADHAPUR MUN 2024-25</title>
-    <!-- Include your styles and fonts here -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Serif+4:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('ungrayimage.jpg'); /* Add the background image */
+            background-size: cover; /* Ensure the image covers the entire page */
+            background-position: center; /* Center the image */
+            color: #c5a47e;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease; /* Smooth transition for background color changes if needed */
+        }
+        header {
+            background-color: rgba(0, 38, 66, 0.8); /* Slightly transparent background for better text visibility */
+            padding: 20px;
+            text-align: center;
+            color: #c5a47e;
+            border-bottom: 2px solid #c5a47e;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for background and text colors */
+        }
+        header h1, header h2 {
+            margin: 5px 0;
+        }
+        nav {
+            background-color: rgba(0, 38, 66, 0.8); /* Slightly transparent background */
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-top: 2px solid #c5a47e; /* Top border */
+            border-bottom: 2px solid #c5a47e; /* Bottom border */
+        }
+        nav a {
+            color: #c5a47e; /* Gold color for text */
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 20px; /* Spacing between links */
+            transition: color 0.3s ease, padding 0.3s ease; /* Smooth color and padding transition */
+            padding-bottom: 2px;
+        }
+        nav a:hover {
+            color: #005580; /* Adjust highlight color on hover */
+            padding-bottom: 4px; /* Small padding increase to simulate underline effect */
+        }
+        nav a:active {
+            color: #d6d9e7; /* Slightly lighter color when clicked */
+        }
+        .container {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .container h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #c5a47e;
+            opacity: 0; /* Start as invisible for fade-in effect */
+            transition: opacity 1s ease-in-out; /* Smooth fade-in transition */
+        }
+        .container h2.fade-in {
+            opacity: 1; /* Make visible when class is added */
+        }
+        .committee-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+        }
+        .committee-list li {
+            margin: 10px;
+        }
+        .committee-list .committee-btn {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #c5a47e;
+            border: 3px solid #c5a47e;
+            border-radius: 5px;
+            background-color: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .committee-list .committee-btn:hover {
+            background-color: #c5a47e;
+            color: #002642;
+        }
+        footer {
+            background-color: #002642;
+            text-align: center;
+            padding: 20px;
+            color: #fafafa;
+            border-top: 2px solid #c5a47e;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,19 +114,25 @@
     </nav>
 
     <div class="container">
-        <h2>Committees</h2>
+        <h2 class="fade-in">Committees</h2>
         <ul class="committee-list">
-            <li>UNSC - United Nations Security Council</li>
-            <li>UNHRC - United Nations Human Rights Council</li>
-            <li>UNCSW - United Nations Commission on the Status of Women</li>
-            <li>DISEC - Disarmament and International Security Committee</li>
-            <li>IP - International Press</li>
-            <li>Allocation Matrix</li>
+            <li><button class="committee-btn">UNICEF</button></li>
+            <li><button class="committee-btn">UNHRC</button></li>
+            <li><button class="committee-btn">UNCSW</button></li>
+            <li><button class="committee-btn">DISEC</button></li>
+            <li><button class="committee-btn">International Press</button></li>
         </ul>
     </div>
 
     <footer>
         <p>&copy; 2024 Global Edge School MUN | All Rights Reserved</p>
     </footer>
+
+    <script>
+        // JavaScript to add the fade-in class to the text
+        window.addEventListener('load', () => {
+            document.querySelector('.container h2').classList.add('fade-in');
+        });
+    </script>
 </body>
 </html>
