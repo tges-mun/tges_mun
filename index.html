@@ -170,6 +170,35 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        header {
+            background-color: #002642;
+            padding: 20px;
+            text-align: center;
+            color: #d6d9e7;
+            position: relative;
+            overflow: hidden; /* Ensure the image doesn't show up outside the header */
+        }
+        
+        header img {
+            max-width: 150px;
+            height: auto;
+            opacity: 0;
+            position: relative;
+            animation: slideInLogoToCenter 2s forwards ease-in-out; /* Slide-in effect for the logo image */
+        }
+        
+        @keyframes slideInLogoToCenter {
+            from {
+                opacity: 0;
+                transform: translateX(-100vw); /* Start from the extreme left (off-screen) */
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0); /* End at the center (original position) */
+            }
+        }        
+        
     </style>
 </head>
 <body>
