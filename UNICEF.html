@@ -56,12 +56,19 @@
             padding: 20px;
             margin-bottom: 40px;
             background-color: rgba(0, 38, 66, 0.8); /* Prussian blue with opacity */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
         }
         .intro-box h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
         }
-        .agenda-box h3, .exec-board h3 {
+        .agenda-box h3, .exec-board-box h3 {
             font-size: 1.8em;
             margin-bottom: 15px;
             color: #c5a47e;
@@ -73,7 +80,7 @@
             align-items: center;
         }
         .exec-box {
-            width: 30%;
+            width: 45%;
             border: 2px solid #c5a47e;
             border-radius: 10px;
             padding: 10px;
@@ -120,34 +127,47 @@
     <div class="container">
         <div class="intro-box">
             <h2>United Nations International Children's Emergency Fund (UNICEF)</h2>
-            <p>UNICEF, the United Nations International Children's Emergency Fund, is committed to advocating for the rights and welfare of children worldwide</p>
+            <p>UNICEF, the United Nations International Children's Emergency Fund, is committed to advocating for the rights and welfare of children worldwide.</p>
             <p>The organization focuses on ensuring access to education, healthcare, and protection for vulnerable children.</p>
         </div>
 
         <div class="agenda-box">
             <h3>Agenda</h3>
-            <p>(Add agenda details here)</p>
+            <p>Addressing child malnutrition.</p>
         </div>
 
         <div class="exec-board-box">
             <h3>Executive Board</h3>
             <div class="exec-board">
                 <div class="exec-box">
-                    <img src="chairperson.jpg" alt="Chairperson">
-                    <p>Chairperson Name</p>
+                    <img src="akshay.jpg" alt="Akshay - Chairperson">
+                    <p>Akshay - Chairperson</p>
                 </div>
                 <div class="exec-box">
-                    <img src="vicechair1.jpg" alt="Vice Chairperson">
-                    <p>Vice Chairperson Name</p>
-                </div>
-                <div class="exec-box">
-                    <img src="vicechair2.jpg" alt="Vice Chairperson">
-                    <p>Vice Chairperson Name</p>
+                    <img src="anjana.jpg" alt="Anjana - Vice Chairperson">
+                    <p>Anjana - Vice Chairperson</p>
                 </div>
             </div>
         </div>
 
         <a href="DISEC_Background_Guide.pdf" class="button">Background Guide</a>
     </div>
+
+    <script>
+        // Function to add fade-in effect when elements come into view
+        function handleScroll() {
+            const elements = document.querySelectorAll('.intro-box, .agenda-box, .exec-board-box');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('fade-in');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll); // Trigger on load in case already in view
+    </script>
 </body>
 </html>

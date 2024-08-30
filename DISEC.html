@@ -13,6 +13,7 @@
             margin: 0;
             padding: 0;
         }
+
         header {
             background-color: #002642;
             padding: 20px;
@@ -20,9 +21,11 @@
             color: #c5a47e;
             border-bottom: 2px solid #c5a47e;
         }
+
         header h1, header h2 {
             margin: 5px 0;
         }
+
         nav {
             background-color: #002642;
             display: flex;
@@ -31,6 +34,7 @@
             border-top: 2px solid #c5a47e;
             border-bottom: 2px solid #c5a47e;
         }
+
         nav a {
             color: #c5a47e;
             text-decoration: none;
@@ -39,51 +43,64 @@
             transition: color 0.3s ease, padding 0.3s ease;
             padding-bottom: 2px;
         }
+
         nav a:hover {
             color: #005580;
             padding-bottom: 4px;
         }
+
         nav a:active {
             color: #d6d9e7;
         }
+
         .container {
             padding: 50px 20px;
             text-align: center;
         }
-        .intro-box, .agenda-box, .exec-board-box {
-            border: 2px solid #c5a47e;
+
+        .fade-in-box {
+            border: 4px solid #c5a47e; /* Thicker border */
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 40px;
             background-color: rgba(0, 38, 66, 0.8); /* Prussian blue with opacity */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transition for scroll animation */
         }
+
         .intro-box h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
         }
+
         .agenda-box h3, .exec-board h3 {
             font-size: 1.8em;
             margin-bottom: 15px;
             color: #c5a47e;
             text-decoration: underline;
         }
+
         .exec-board {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
         }
+
         .exec-box {
-            width: 30%;
+            width: 40%;
             border: 2px solid #c5a47e;
             border-radius: 10px;
             padding: 10px;
             text-align: center;
         }
+
         .exec-box img {
             width: 100%;
             border-radius: 10px;
             margin-bottom: 10px;
         }
+
         .button {
             display: inline-block;
             padding: 10px 20px;
@@ -97,6 +114,7 @@
             margin-top: 20px;
             transition: background-color 0.3s ease;
         }
+
         .button:hover {
             background-color: #d6d9e7;
             color: #002642;
@@ -118,36 +136,52 @@
     </nav>
 
     <div class="container">
-        <div class="intro-box">
+        <div class="fade-in-box intro-box">
             <h2>Disarmament And International Security Committee (DISEC)</h2>
             <p>The Disarmament And International Security Committee deals with disarmament, global challenges, and threats to peace that affect the international community. The committee considers a wide range of issues related to disarmament, arms control, and international security, with the goal of promoting peace and security worldwide.</p>
             <p>Its mandate includes addressing issues such as nuclear disarmament, conventional weapons proliferation, arms control agreements, and the prevention of conflicts. The committee also works on initiatives to strengthen international security mechanisms and promote cooperation among nations to address common security challenges.</p>
         </div>
 
-        <div class="agenda-box">
+        <div class="fade-in-box agenda-box">
             <h3>Agenda</h3>
-            <p>(Add agenda details here)</p>
+            <p>Addressing the threat posed by violent non-state actors on using biological and chemical weapons.</p>
         </div>
 
-        <div class="exec-board-box">
+        <div class="fade-in-box exec-board-box">
             <h3>Executive Board</h3>
             <div class="exec-board">
                 <div class="exec-box">
-                    <img src="chairperson.jpg" alt="Chairperson">
-                    <p>Chairperson Name</p>
+                    <img src="sohan.jpg" alt="Co-Chairperson">
+                    <p>Sohan (Co-Chairperson)</p>
                 </div>
                 <div class="exec-box">
-                    <img src="vicechair1.jpg" alt="Vice Chairperson">
-                    <p>Vice Chairperson Name</p>
-                </div>
-                <div class="exec-box">
-                    <img src="vicechair2.jpg" alt="Vice Chairperson">
-                    <p>Vice Chairperson Name</p>
+                    <img src="samhitha.jpg" alt="Co-Chairperson">
+                    <p>Samhitha (Co-Chairperson)</p>
                 </div>
             </div>
         </div>
 
         <a href="DISEC_Background_Guide.pdf" class="button">Background Guide</a>
     </div>
+
+    <script>
+        // Function to handle fade-in animation on scroll
+        function fadeInOnScroll() {
+            const fadeInElements = document.querySelectorAll('.fade-in-box');
+
+            fadeInElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2; // Adjust scroll position for triggering
+
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Event listener for scroll
+        document.addEventListener('scroll', fadeInOnScroll);
+    </script>
 </body>
 </html>
