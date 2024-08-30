@@ -16,54 +16,70 @@
             padding: 0;
             transition: background-color 0.3s ease; /* Smooth transition for background color changes if needed */
         }
+
         header {
             background-color: rgba(0, 38, 66, 0.8); /* Slightly transparent background for better text visibility */
             padding: 20px;
             text-align: center;
             color: #c5a47e;
             border-bottom: 2px solid #c5a47e;
-            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions for background and text colors */
+            /* Remove animation from the header tab */
         }
+
         header h1, header h2 {
-            margin: 5px 0;
+            animation: slide-up-fade-in 2s ease-in-out forwards;
         }
+
+        @keyframes slide-up-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px); /* Slide up from 20px below */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0); /* Final position */
+            }
+        }
+
         nav {
-            background-color: rgba(0, 38, 66, 0.8); /* Slightly transparent background */
+            background-color: #002642;
             display: flex;
             justify-content: center;
             padding: 15px 0;
-            border-top: 2px solid #c5a47e; /* Top border */
-            border-bottom: 2px solid #c5a47e; /* Bottom border */
+            border-top: 2px solid #c5a47e;
+            border-bottom: 2px solid #c5a47e;
         }
+
         nav a {
-            color: #c5a47e; /* Gold color for text */
+            color: #c5a47e;
             text-decoration: none;
             font-weight: bold;
-            margin: 0 20px; /* Spacing between links */
-            transition: color 0.3s ease, padding 0.3s ease; /* Smooth color and padding transition */
+            margin: 0 20px;
+            transition: color 0.3s ease, padding 0.3s ease;
             padding-bottom: 2px;
         }
+
         nav a:hover {
-            color: #005580; /* Adjust highlight color on hover */
-            padding-bottom: 4px; /* Small padding increase to simulate underline effect */
+            color: #005580;
+            padding-bottom: 4px;
         }
+
         nav a:active {
-            color: #d6d9e7; /* Slightly lighter color when clicked */
+            color: #d6d9e7;
         }
+
         .container {
             padding: 50px 20px;
             text-align: center;
         }
+
         .container h2 {
             font-size: 2.5em;
             margin-bottom: 40px;
             color: #c5a47e;
-            opacity: 0; /* Start as invisible for fade-in effect */
-            transition: opacity 1s ease-in-out; /* Smooth fade-in transition */
+            animation: slide-up-fade-in 2s ease-in-out forwards;
         }
-        .container h2.fade-in {
-            opacity: 1; /* Make visible when class is added */
-        }
+
         .committee-list {
             display: flex;
             flex-wrap: wrap;
@@ -71,9 +87,11 @@
             list-style-type: none;
             padding: 0;
         }
+
         .committee-list li {
             margin: 10px;
         }
+
         .committee-list .committee-btn {
             display: inline-block;
             padding: 20px 40px;
@@ -84,12 +102,17 @@
             border-radius: 5px;
             background-color: transparent;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, opacity 2s ease-in-out;
+            opacity: 0;
+            animation: slide-up-fade-in 2s ease-in-out forwards;
+            animation-delay: 0.5s; /* Slight delay for buttons */
         }
+
         .committee-list .committee-btn:hover {
             background-color: #c5a47e;
             color: #002642;
         }
+
         footer {
             background-color: #002642;
             text-align: center;
@@ -111,31 +134,22 @@
         <a href="secretariat.html">Secretariat</a>
         <a href="registrations.html">Registrations</a>
         <a href="committees.html">Committees</a>
+        <a href="">Allocation Matrix</a>
     </nav>
 
     <div class="container">
-        <h2 class="fade-in">Committees</h2>
+        <h2>Committees</h2>
         <ul class="committee-list">
-            <ul class="committee-list">
-                <li><a href="UNICEF.html"><button class="committee-btn">UNICEF</button></a></li>
-                <li><a href="UNHRC.html"><button class="committee-btn">UNHRC</button></a></li>
-                <li><a href="UNCSW.html"><button class="committee-btn">UNCSW</button></a></li>
-                <li><a href="DISEC.html"><button class="committee-btn">DISEC</button></a></li>
-                <li><a href="INTERNATIONALPRESS.html"><button class="committee-btn">International Press</button></a></li>
-            </ul>
-            
+            <li><button class="committee-btn" onclick="location.href='DISEC.html'">DISEC</button></li>
+            <li><button class="committee-btn" onclick="location.href='UNICEF.html'">UNICEF</button></li>
+            <li><button class="committee-btn" onclick="location.href='UNHRC.html'">UNHRC</button></li>
+            <li><button class="committee-btn" onclick="location.href='UNCSW.html'">UNCSW</button></li>
+            <li><button class="committee-btn" onclick="location.href='INTERNATIONALPRESS.html'">International Press</button></li>
         </ul>
     </div>
 
     <footer>
         <p>&copy; 2024 Global Edge School MUN | All Rights Reserved</p>
     </footer>
-
-    <script>
-        // JavaScript to add the fade-in class to the text
-        window.addEventListener('load', () => {
-            document.querySelector('.container h2').classList.add('fade-in');
-        });
-    </script>
 </body>
 </html>
