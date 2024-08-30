@@ -3,13 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources - TGES MADHAPUR MUN 2024-25</title>
-    <!-- Include your styles and fonts here -->
+    <title>Resources - TGES MUN 2024</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #002642; /* Prussian blue background */
+            color: #c5a47e;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #002642;
+            padding: 20px;
+            text-align: center;
+            color: #c5a47e;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInSlideUp 1s forwards;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        header h2 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #002642;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 20px;
+            border-top: 2px solid #c5a47e;
+            border-bottom: 2px solid #c5a47e;
+        }
+
+        nav a {
+            color: #c5a47e;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: color 0.3s ease, padding 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f5d580;
+            padding-bottom: 4px;
+        }
+
+        /* Content */
+        .content-container {
+            display: flex;
+            justify-content: flex-start; /* Align content to the left */
+            padding: 50px;
+            margin: 0 10%;
+            position: relative; /* Ensure relative positioning */
+            align-items: center; /* Align items vertically */
+        }
+
+        .letter-box {
+            width: 60%;
+            background-color: #003953; /* Lighter shade of Prussian blue */
+            padding: 20px;
+            border-radius: 15px; /* Rounded corners */
+            color: #c5a47e;
+            z-index: 2;
+            position: relative; /* Ensure this is the container for positioning the background image */
+        }
+
+        .image-box {
+            position: absolute;
+            top: 50%; /* Align image to the middle of the container */
+            right: 0;
+            width: 60%;
+            height: 40%; /* Adjust height to fit the container */
+            z-index: 1;
+            overflow: hidden;
+            border-radius: 10px; /* Rounded corners */
+            transform: translateY(-50%); /* Center the image vertically relative to the letter-box */
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5; /* Transparent image */
+        }
+
+        /* Resources Boxes */
+        .resource-box-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 0;
+            gap: 20px; /* Reduced gap between resource boxes */
+        }
+
+        .resource-box {
+            background-color: #002642;
+            border: 3px solid #c5a47e; /* Increase border width for a thicker appearance */
+            border-radius: 10px;
+            width: 45%; /* Ensure boxes are still adequately spaced */
+            padding: 20px;
+            text-align: center;
+            color: #c5a47e;
+        }
+
+        .resource-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .resource-box p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .resource-button {
+            display: inline-block;
+            background-color: #c5a47e;
+            color: #002642;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .resource-button:hover {
+            background-color: #d2ae78;
+        }
+
+        .golden-line {
+            border-top: 2px solid #c5a47e; /* Golden color */
+            margin: 40px 0; /* Adjust spacing as needed */
+        }
+
+        /* Animations */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .content-container {
+            animation: slideIn 1s ease-in-out;
+        }
+
+        footer {
+            background-color: #002642;
+            padding: 20px;
+            text-align: center;
+            color: #c5a47e;
+            border-top: 2px solid #c5a47e; /* Golden border on top of footer */
+        }
+    </style>
 </head>
 <body>
+
     <header>
         <h1>Global Edge School MUN 2024</h1>
-        <h2>TGES MADHAPUR MUN 2024-25</h2>
+        <h2>TGES MUN 2024</h2>
     </header>
 
     <nav>
@@ -18,15 +196,56 @@
         <a href="secretariat.html">Secretariat</a>
         <a href="registrations.html">Registrations</a>
         <a href="committees.html">Committees</a>
+        <a href="#">Allocation Matrix</a>
     </nav>
 
-    <div class="container">
-        <h2>Resources</h2>
-        <p>Access all the necessary documents, study guides, and background papers here.</p>
-    </div>
+    <main>
+        <div class="content-container">
+            <div class="letter-box">
+                <h2>Samhitha Kaluri</h2>
+                <h3>Secretary-General</h3>
+                <h4>TGES MDP MUN 2024-25</h4>
+                <p>Dear Delegates,</p>
+                <p>
+                    It is with great pleasure and enthusiasm that I welcome you to the 1st edition of our MUN Conference, held at Global Edge School Madhapur. As Secretary-General, it is my honor to host this gathering of passionate and dedicated individuals from across the globe who share a commitment to understanding and addressing the most pressing issues of our time.
+                </p>
+                <p>
+                    The world today faces unprecedented challenges, from climate change and global pandemics to geopolitical tensions and humanitarian crises. These issues transcend borders and require innovative, collaborative, and inclusive solutions. At TGES MDP MUN, we strive to create an environment that fosters critical thinking, constructive debate, and diplomacy. This conference is not just an opportunity to simulate the workings of the United Nations but also a chance to empower each of you to become agents of change in your communities and the world at large.
+                </p>
+                <p>
+                    I encourage you to approach this conference with an open mind, a spirit of collaboration, and a commitment to finding common ground. Remember, diplomacy is not just about defending a position; it's about understanding different perspectives, building consensus, and forging paths toward a better future for all.
+                </p>
+                <p>
+                    Kind Regards,<br>
+                    Samhitha Kaluri<br>
+                    Secretary-General<br>
+                    TGES MDP MUN 2024-25
+                </p>
+            </div>
+
+            <div class="image-box">
+                <img src="resourceimage.png" alt="Background Image">
+            </div>
+        </div>
+
+        <div class="resource-box-container">
+            <div class="resource-box">
+                <h3>Code Of Conduct</h3>
+                <p>Knowing MUN's Code of Conduct is crucial for all participants. It sets the rules for behavior during the conference, ensuring a respectful and productive environment.</p>
+                <a href="CodeOfConduct.pdf" target="_blank" class="resource-button">COC</a>
+            </div>
+
+            <div class="resource-box">
+                <h3>Itinerary</h3>
+                <p>Go through the itinerary for efficient planning. Delegates are expected to adhere to it.</p>
+                <a href="Itinerary.pdf" target="_blank" class="resource-button">Itinerary</a>
+            </div>
+        </div>
+    </main>
 
     <footer>
-        <p>&copy; 2024 Global Edge School MUN | All Rights Reserved</p>
+        <p>&copy; 2024 TGES MUN. All Rights Reserved.</p>
     </footer>
+
 </body>
 </html>
