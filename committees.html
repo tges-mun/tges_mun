@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committees - TGES MADHAPUR MUN 2024-25</title>
-    <link rel="icon" href="logomun.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Serif+4:wght@400;700&display=swap">
     <style>
         /* Global Styles */
@@ -13,12 +12,12 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background-image: url('ungrayimage.jpg'); /* Add the background image */
-            background-size: cover; /* Ensure the image covers the entire page */
-            background-position: center; /* Center the image */
+            background-image: url('ungrayimage.jpg');
+            background-size: cover;
+            background-position: center;
             color: #c5a47e;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
-            transition: background-color 0.3s ease; /* Smooth transition for background color changes if needed */
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
         }
 
         body {
@@ -28,11 +27,12 @@
         }
 
         header {
-            background-color: rgba(0, 38, 66, 0.8); /* Slightly transparent background for better text visibility */
+            background-color: rgba(0, 38, 66, 0.8);
             padding: 20px;
             text-align: center;
             color: #c5a47e;
             border-bottom: 2px solid #c5a47e;
+            position: relative;
         }
 
         header h1, header h2 {
@@ -42,12 +42,30 @@
         @keyframes slide-up-fade-in {
             from {
                 opacity: 0;
-                transform: translateY(20px); /* Slide up from 20px below */
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0); /* Final position */
+                transform: translateY(0);
             }
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #c5a47e;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .menu-icon::before {
+            content: "☰";
+        }
+
+        .menu-icon.open::before {
+            content: "✖";
         }
 
         nav {
@@ -57,6 +75,9 @@
             padding: 15px 0;
             border-top: 2px solid #c5a47e;
             border-bottom: 2px solid #c5a47e;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         nav a {
@@ -80,7 +101,7 @@
         .container {
             padding: 50px 20px;
             text-align: center;
-            flex-grow: 1; /* Ensure container expands to fill the space */
+            flex-grow: 1;
         }
 
         .container h2 {
@@ -115,7 +136,7 @@
             transition: background-color 0.3s ease, opacity 2s ease-in-out;
             opacity: 0;
             animation: slide-up-fade-in 2s ease-in-out forwards;
-            animation-delay: 0.5s; /* Slight delay for buttons */
+            animation-delay: 0.5s;
         }
 
         .committee-list .committee-btn:hover {
@@ -133,15 +154,61 @@
             bottom: 0;
             width: 100%;
         }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+                position: fixed; /* Fixed to stay visible */
+                top: 70px;
+                right: 20px;
+                width: 200px;
+                background-color: #002642;
+                text-align: center;
+                z-index: 1000; /* Higher z-index to appear on top */
+                border-top: 2px solid #c5a47e;
+                border-radius: 10px;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden; /* Hide initially */
+                transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .nav-menu.show {
+                visibility: visible; /* Make it visible when active */
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            nav a {
+                display: block;
+                padding: 15px;
+                color: #c5a47e;
+                text-decoration: none;
+                font-weight: bold;
+                border-bottom: 1px solid #c5a47e;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: #005580;
+                color: #fff;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Global Edge School MUN 2024</h1>
         <h2>TGES MADHAPUR MUN 2024-25</h2>
+        <div class="menu-icon"></div>
     </header>
 
-    <nav>
+    <nav class="nav-menu">
         <a href="index.html">Home</a>
         <a href="resources.html">Resources</a>
         <a href="secretariat.html">Secretariat</a>
@@ -164,5 +231,16 @@
     <footer>
         <p>&copy; 2024 Global Edge School MUN | All Rights Reserved</p>
     </footer>
+
+    <script>
+        // Menu toggle for mobile
+        const menuIcon = document.querySelector('.menu-icon');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            menuIcon.classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
