@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrations - TGES MADHAPUR MUN 2024-25</title>
-    <link rel="icon" href="logomun.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
     <style>
         body {
@@ -25,23 +24,51 @@
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeInSlideUp 1s forwards;
+            position: relative;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #c5a47e;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .menu-icon::before {
+            content: "☰";
+        }
+
+        .menu-icon.open::before {
+            content: "✖";
         }
 
         nav {
             background-color: #002642;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 10px 20px;
+            padding: 10px 0;
             border-top: 2px solid #c5a47e;
             border-bottom: 2px solid #c5a47e;
+            position: static; /* PC version */
+            top: auto;
+            right: auto;
+            width: auto;
+            text-align: center;
+            z-index: 1000;
+            border-radius: 0;
+            transform: none;
+            opacity: 1;
+            visibility: visible;
         }
 
         nav a {
             color: #c5a47e;
             text-decoration: none;
             font-weight: bold;
-            margin: 0 15px;
+            margin: 0 20px;
             transition: color 0.3s ease, padding 0.3s ease;
         }
 
@@ -56,23 +83,23 @@
             color: #c5a47e;
         }
 
-        .container h2, .container p {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInSlideUp 1s forwards;
-        }
-
         .container h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
             border-bottom: 2px solid #c5a47e;
             display: inline-block;
             padding-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1s forwards;
         }
 
         .container p {
             font-size: 1.2em;
             margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1s forwards;
         }
 
         .register-btn {
@@ -83,6 +110,10 @@
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1s forwards;
         }
 
         .register-btn:hover {
@@ -108,16 +139,62 @@
                 transform: translateY(0);
             }
         }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                width: 200px;
+                background-color: #002642;
+                text-align: center;
+                z-index: 1000;
+                border-top: 2px solid #c5a47e;
+                border-radius: 10px;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden; /* Hide initially */
+            }
+
+            .nav-menu.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible; /* Show when active */
+            }
+
+            nav a {
+                display: block;
+                padding: 15px;
+                color: #c5a47e;
+                text-decoration: none;
+                font-weight: bold;
+                border-bottom: 1px solid #c5a47e;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: #005580;
+                color: #fff;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Global Edge School MUN 2024</h1>
         <h2>TGES MADHAPUR MUN 2024-25</h2>
+        <div class="menu-icon"></div>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>       
+    <nav class="nav-menu">
+        <a href="index.html">Home</a>
         <a href="resources.html">Resources</a>
         <a href="secretariat.html">Secretariat</a>
         <a href="registrations.html">Registrations</a>
@@ -134,5 +211,16 @@
     <footer>
         <p>&copy; 2024 Global Edge School MUN | All Rights Reserved</p>
     </footer>
+
+    <script>
+        // Menu toggle for mobile
+        const menuIcon = document.querySelector('.menu-icon');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            menuIcon.classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
