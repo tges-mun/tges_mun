@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - TGES MADHAPUR MUN 2024-25</title>
-    <link rel="icon" href="logomun.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Serif+4:wght@400;700&display=swap">
     <style>
         body {
@@ -16,19 +15,55 @@
             scroll-behavior: smooth;
             transition: color 0.3s ease;
         }
+
         header {
             background-color: #002642;
             padding: 20px;
             text-align: center;
             color: #d6d9e7;
             position: relative;
+            overflow: hidden;
             opacity: 0;
             animation: fadeIn 2s forwards;
         }
+
         header img {
             max-width: 150px;
             height: auto;
+            opacity: 0;
+            position: relative;
+            animation: slideInLogoToCenter 2s forwards ease-in-out;
         }
+
+        @keyframes slideInLogoToCenter {
+            from {
+                opacity: 0;
+                transform: translateX(-100vw);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #c5a47e;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .menu-icon::before {
+            content: "☰";
+        }
+
+        .menu-icon.open::before {
+            content: "✖";
+        }
+
         nav {
             background-color: #002642;
             display: flex;
@@ -55,6 +90,7 @@
         nav a:active {
             color: #d6d9e7;
         }
+
         .hero-section {
             position: relative;
             text-align: center;
@@ -65,33 +101,41 @@
             background-attachment: fixed;
             padding: 100px 20px;
             background-color: rgba(0, 0, 0, 0.5);
+            opacity: 1;
         }
+
+        .hero-section h1,
+        .hero-section h2,
+        .hero-section .welcome-message,
+        .hero-section .register-btn {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+        }
+
         .hero-section h1 {
             font-size: 4em;
             margin: 0;
             color: #c5a47e;
-            opacity: 0;
-            transform: translateX(-50%);
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            animation: fadeInUp 1s ease-in-out forwards;
         }
+
         .hero-section h2 {
             font-size: 2em;
             font-weight: bold;
             margin-top: 20px;
             color: #c5a47e;
-            opacity: 0;
-            transform: translateX(50%);
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            animation: fadeInUp 1s ease-in-out 0.5s forwards;
         }
+
         .hero-section .welcome-message {
             font-size: 1.5em;
             margin-top: 40px;
             font-weight: bold;
             color: #c5a47e;
-            opacity: 0;
-            transform: translateX(-50%);
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            animation: fadeInUp 1s ease-in-out 1s forwards;
         }
+
         .hero-section .register-btn {
             margin-top: 60px;
             padding: 15px 30px;
@@ -101,114 +145,145 @@
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            opacity: 0;
-            transform: translateX(50%);
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            animation: fadeInUp 1s ease-in-out 1.5s forwards;
         }
+
         .hero-section .register-btn:hover {
             background-color: #005580;
         }
-        .countdown-section {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: #002642;
-            color: #c5a47e;
-            opacity: 0;
-            transform: translateY(50%);
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-            border: 5px solid #c5a47e; /* Thicker gold-colored box around countdown */
-            border-radius: 10px; /* Rounded corners */
-        }
-        .countdown-section h2 {
-            font-size: 2em;
-            margin: 0;
-        }
-        .countdown-section p {
-            font-size: 1.2em;
-            margin-top: 20px;
-        }
 
-        /* Golden line style */
-        .golden-line-container {
-            display: flex;
-            justify-content: center;
-            background-color: #002642; /* Match the background color */
-            padding: 20px 0; /* Add some space around the line */
-        }
-        .golden-line {
-            border-bottom: 2px solid #c5a47e; /* Gold color */
-            width: 60%; /* Set the line width to 60% */
-        }
-
+        .countdown-section,
         .venue-section {
-            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
             padding: 50px 20px;
             background-color: #002642;
             color: #c5a47e;
-            opacity: 0;
-            transform: translateY(50%);
-            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-            border: 5px solid #c5a47e; /* Thicker gold-colored box around venue */
-            border-radius: 10px; /* Rounded corners */
+            border: 5px solid #c5a47e;
+            border-radius: 10px;
+            text-align: center;
         }
+
+        .countdown-section h2,
         .venue-section h2 {
             font-size: 2em;
             margin: 0;
         }
+
+        .countdown-section p,
         .venue-section p {
             font-size: 1.2em;
             margin-top: 20px;
         }
+
+        .golden-line-container {
+            display: flex;
+            justify-content: center;
+            background-color: #002642;
+            padding: 20px 0;
+        }
+
+        .golden-line {
+            border-bottom: 2px solid #c5a47e;
+            width: 60%;
+        }
+
         footer {
             background-color: #002642;
             text-align: center;
             padding: 20px;
-            color: #c5a47e;
+            color: #fafafa;
         }
 
-        /* Fade-in effect */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        header {
-            background-color: #002642;
-            padding: 20px;
-            text-align: center;
-            color: #d6d9e7;
-            position: relative;
-            overflow: hidden; /* Ensure the image doesn't show up outside the header */
-        }
-        
-        header img {
-            max-width: 150px;
-            height: auto;
-            opacity: 0;
-            position: relative;
-            animation: slideInLogoToCenter 2s forwards ease-in-out; /* Slide-in effect for the logo image */
-        }
-        
-        @keyframes slideInLogoToCenter {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateX(-100vw); /* Start from the extreme left (off-screen) */
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-                transform: translateX(0); /* End at the center (original position) */
+                transform: translateY(0);
             }
-        }        
-        
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 20px;
+                display: flex;
+                align-items: center;
+            }
+
+            header img {
+                max-width: 100px;
+                margin-left: 20px;
+                margin-right: auto;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                width: 200px;
+                background-color: #002642;
+                text-align: center;
+                z-index: 1000; /* Ensures the nav-menu is on top */
+                border-top: 2px solid #c5a47e;
+                border-radius: 10px;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden; /* Hide the menu initially */
+                transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .nav-menu.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible; /* Show the menu when active */
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 15px;
+                color: #c5a47e;
+                text-decoration: none;
+                font-weight: bold;
+                border-bottom: 1px solid #c5a47e;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            .nav-menu a:hover {
+                background-color: #005580;
+                color: #fff;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="logomun.png" alt="Global Edge School Logo"> <!-- Replace with your actual logo path -->
+        <img src="logomun.png" alt="Global Edge School Logo">
+        <div class="menu-icon"></div>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>       
+    <nav class="nav-menu">
+        <a href="index.html">Home</a>
         <a href="resources.html">Resources</a>
         <a href="secretariat.html">Secretariat</a>
         <a href="registrations.html">Registrations</a>
@@ -217,88 +292,87 @@
     </nav>
 
     <section class="hero-section">
-        <h1>Welcome to TGES MADHAPUR MUN 2024-25</h1>
-        <h2>Building Tomorrow’s Leaders Today</h2>
-        <p class="welcome-message">Join us for an unforgettable experience.</p>
+        <h1>Welcome to TGES Madhapur MUN 2024-25</h1>
+        <h2>Engage. Debate. Achieve.</h2>
+        <p class="welcome-message">Join us for an unforgettable experience at our Model United Nations conference!</p>
         <a href="registrations.html" class="register-btn">Register Now</a>
     </section>
 
-    <section class="countdown-section">
-        <h2>COUNTDOWN!</h2>
+    <section class="countdown-section fade-in">
+        <h2>Countdown to the Event</h2>
         <p id="countdown"></p>
     </section>
 
-    <!-- Golden line between Countdown and Venue -->
     <div class="golden-line-container">
         <div class="golden-line"></div>
     </div>
 
-    <section class="venue-section">
-        <h2>Event Venue</h2>
-        <p>The conference will be held at the Global Edge School, Madhapur.</p>
+    <section class="venue-section fade-in">
+        <h2>Venue Details</h2>
+        <p>Discover more about our venue and its exciting features.</p>
     </section>
 
     <footer>
-        <p>&copy; 2024 TGES MADHAPUR MUN. All rights reserved.</p>
+        <p>&copy; 2024 TGES Madhapur MUN | Designed by Your Team</p>
     </footer>
 
     <script>
+        // Countdown Timer
+        const countdownDate = new Date("October 1, 2024 00:00:00").getTime();
+        
         function updateCountdown() {
-            const now = new Date();
-            const eventDate = new Date('October 1, 2024 00:00:00');
-            const timeDifference = eventDate - now;
-
-            if (timeDifference <= 0) {
-                document.getElementById('countdown').innerHTML = "The event has started!";
-                return;
-            }
-
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-            document.getElementById('countdown').innerHTML = `
-                ${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds
-            `;
-        }
-
-        setInterval(updateCountdown, 1000); // Update the countdown every second
-        updateCountdown(); // Initial call to set countdown immediately
-
-        // Slide-in effects on scroll
-        function handleScroll() {
-            const heroSection = document.querySelector('.hero-section');
-            const countdownSection = document.querySelector('.countdown-section');
-            const venueSection = document.querySelector('.venue-section');
-            const heroPosition = heroSection.getBoundingClientRect().top;
-            const countdownPosition = countdownSection.getBoundingClientRect().top;
-            const venuePosition = venueSection.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.2;
-
-            if (heroPosition < screenPosition) {
-                heroSection.querySelector('h1').style.opacity = '1';
-                heroSection.querySelector('h1').style.transform = 'translateX(0)';
-                heroSection.querySelector('h2').style.opacity = '1';
-                heroSection.querySelector('h2').style.transform = 'translateX(0)';
-                heroSection.querySelector('.welcome-message').style.opacity = '1';
-                heroSection.querySelector('.welcome-message').style.transform = 'translateX(0)';
-                heroSection.querySelector('.register-btn').style.opacity = '1';
-                heroSection.querySelector('.register-btn').style.transform = 'translateX(0)';
-            }
-
-            if (countdownPosition < screenPosition) {
-                countdownSection.style.opacity = '1';
-                countdownSection.style.transform = 'translateY(0)';
-            }
-
-            if (venuePosition < screenPosition) {
-                venueSection.style.opacity = '1';
-                venueSection.style.transform = 'translateY(0)';
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById("countdown").innerHTML =
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
             }
         }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
 
-        window.addEventListener('scroll', handleScroll);
+        // Mobile Menu Toggle
+        document.querySelector('.menu-icon').addEventListener('click', function() {
+            this.classList.toggle('open');
+            document.querySelector('.nav-menu').classList.toggle('show');
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Fade-in animation for the hero section and body text on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.hero-section h1, .hero-section h2, .hero-section .welcome-message, .hero-section .register-btn').forEach(el => {
+                el.classList.add('visible');
+            });
+        });
     </script>
 </body>
 </html>
