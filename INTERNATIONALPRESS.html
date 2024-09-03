@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IP - TGES MADHAPUR MUN 2024-25</title>
-    <link rel="icon" href="logomun.png" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Source+Serif+4:wght@400;700&display=swap">
     <style>
         body {
@@ -120,6 +119,60 @@
             background-color: #d6d9e7;
             color: #002642;
         }
+
+        /* Hamburger menu styles */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: fixed; /* Ensure the menu is fixed in place */
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: opacity 0.6s ease, transform 0.6s ease; /* Add transition for fade and sway */
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 3px;
+            background-color: #c5a47e;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        #nav-menu {
+            display: none;
+            flex-direction: column;
+            position: fixed; /* Ensure the menu is fixed in place */
+            top: 60px; /* Adjust as needed to ensure it does not overlap with other elements */
+            right: 20px;
+            background-color: #002642;
+            border: 2px solid #c5a47e;
+            border-radius: 5px;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        #nav-menu a {
+            color: #c5a47e;
+            text-decoration: none;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        #nav-menu a:hover {
+            color: #005580;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .menu-icon {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
@@ -137,6 +190,21 @@
         <a href="">Allocation Matrix</a>
     </nav>
 
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+        <a href="secretariat.html">Secretariat</a>
+        <a href="registrations.html">Registrations</a>
+        <a href="committees.html">Committees</a>
+        <a href="">Allocation Matrix</a>
+    </div>
+
     <div class="container">
         <div class="fade-in-box intro-box">
             <h2>The International Press (IP)</h2>
@@ -148,16 +216,43 @@
             <h3>Executive Board</h3>
             <div class="exec-board">
                 <div class="exec-box">
-                    <img src="vindhya_edited.jpg" alt="IP Head">
+                    <img src="vindhya.jpg" alt="IP Head">
                     <p>Vindhya Naidu (IP Head)</p>
                 </div>
             </div>
         </div>
 
-        <a href="IP.pdf" class="button">Background Guide</a>
+        <a href="DISEC_Background_Guide.pdf" class="button">Background Guide</a>
     </div>
 
     <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        let lastScrollTop = 0;
+        const menuIcon = document.querySelector('.menu-icon');
+
+        function handleScroll() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop) {
+                // Scrolling down
+                menuIcon.style.opacity = '0';
+                menuIcon.style.transform = 'translateY(20px)';
+            } else {
+                // Scrolling up
+                menuIcon.style.opacity = '1';
+                menuIcon.style.transform = 'translateY(0)';
+            }
+
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll); // Trigger on load in case already in view
+
         // Function to handle fade-in animation on scroll
         function fadeInOnScroll() {
             const fadeInElements = document.querySelectorAll('.fade-in-box');
