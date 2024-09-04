@@ -14,6 +14,7 @@
             color: #c5a47e;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
 
         /* Header */
@@ -22,6 +23,7 @@
             padding: 20px;
             text-align: center;
             color: #c5a47e;
+            position: relative;
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeInSlideUp 1s forwards;
@@ -38,28 +40,112 @@
             margin: 0;
         }
 
-        /* Navbar */
+        /* Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #c5a47e;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 3px;
+            background-color: #c5a47e;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        .menu-icon.open div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-icon.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.open div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
         nav {
             background-color: #002642;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 10px 20px;
+            padding: 10px 0;
             border-top: 2px solid #c5a47e;
             border-bottom: 2px solid #c5a47e;
+            position: static; /* PC version */
+            top: auto;
+            right: auto;
+            width: auto;
+            text-align: center;
+            z-index: 1000;
+            border-radius: 0;
+            transform: none;
+            opacity: 1;
+            visibility: visible;
         }
 
         nav a {
             color: #c5a47e;
             text-decoration: none;
             font-weight: bold;
-            margin: 0 15px;
+            margin: 0 20px;
             transition: color 0.3s ease, padding 0.3s ease;
         }
 
         nav a:hover {
             color: #f5d580;
             padding-bottom: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                width: 200px;
+                background-color: #002642;
+                text-align: center;
+                z-index: 1000;
+                border-top: 2px solid #c5a47e;
+                border-radius: 10px;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden; /* Hide initially */
+            }
+
+            .nav-menu.show {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible; /* Show when active */
+            }
+
+            nav a {
+                display: block;
+                padding: 15px;
+                color: #c5a47e;
+                text-decoration: none;
+                font-weight: bold;
+                border-bottom: 1px solid #c5a47e;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: #005580;
+                color: #fff;
+            }
         }
 
         /* Content */
@@ -70,6 +156,7 @@
             margin: 0 10%;
             position: relative; /* Ensure relative positioning */
             align-items: center; /* Align items vertically */
+            animation: slideIn 1s ease-in-out;
         }
 
         .letter-box {
@@ -117,6 +204,14 @@
             padding: 20px;
             text-align: center;
             color: #c5a47e;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Start from below */
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .resource-box.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .resource-box h3 {
@@ -162,17 +257,19 @@
         }
 
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes slideIn {
             0% { transform: translateY(20px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
-        }
-
-        .content-container {
-            animation: slideIn 1s ease-in-out;
         }
 
         footer {
@@ -182,6 +279,35 @@
             color: #c5a47e;
             border-top: 2px solid #c5a47e; /* Golden border on top of footer */
         }
+
+        /* Media query for small screens (e.g., mobile devices) */
+        @media (max-width: 768px) {
+            /* Hide the background image on small screens */
+            .image-box {
+                display: none;
+            }
+
+            /* Make the letter-box wider */
+            .letter-box {
+                width: 90%; /* Adjust width for smaller screens */
+            }
+
+            /* Adjust the margin of the content-container to ensure proper spacing */
+            .content-container {
+                margin: 0 5%; /* Reduce the margin to utilize more screen space */
+            }
+
+            /* Ensure the resource boxes fit well on small screens */
+            .resource-box-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .resource-box {
+                width: 90%; /* Full width on small screens */
+                margin-bottom: 20px; /* Space between boxes */
+            }
+        }
     </style>
 </head>
 <body>
@@ -189,9 +315,14 @@
     <header>
         <h1>Global Edge School MUN 2024</h1>
         <h2>TGES MUN 2024</h2>
+        <div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </header>
 
-    <nav>
+    <nav class="nav-menu">
         <a href="index.html">Home</a>
         <a href="resources.html">Resources</a>
         <a href="secretariat.html">Secretariat</a>
@@ -225,7 +356,7 @@
             </div>
 
             <div class="image-box">
-                <img src="resourceimage.png" alt="Background Image">
+                <img src="Resources Image.png" alt="Background Image">
             </div>
         </div>
 
@@ -244,9 +375,49 @@
         </div>
     </main>
 
+
+
     <footer>
         <p>&copy; 2024 TGES MUN. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menu toggle for mobile
+            const menuIcon = document.querySelector('.menu-icon');
+            const navMenu = document.querySelector('.nav-menu');
+
+            menuIcon.addEventListener('click', () => {
+                navMenu.classList.toggle('show');
+                menuIcon.classList.toggle('open');
+            });
+
+            // JavaScript for fade-in effect on scroll
+            const resourceBoxes = document.querySelectorAll('.resource-box');
+
+            function checkVisibility() {
+                const viewportHeight = window.innerHeight;
+                const scrollY = window.scrollY;
+
+                resourceBoxes.forEach(box => {
+                    const boxTop = box.getBoundingClientRect().top + scrollY;
+                    const boxBottom = boxTop + box.offsetHeight;
+
+                    // Check if the box is within the viewport
+                    if (boxBottom > scrollY && boxTop < scrollY + viewportHeight) {
+                        box.classList.add('visible');
+                    }
+                });
+            }
+
+            // Initial check
+            checkVisibility();
+
+            // Check visibility on scroll and resize
+            window.addEventListener('scroll', checkVisibility);
+            window.addEventListener('resize', checkVisibility);
+        });
+    </script>
 
 </body>
 </html>
