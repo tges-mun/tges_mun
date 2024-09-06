@@ -69,6 +69,10 @@
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
+        .intro-box {
+            z-index: 10; /* Ensure it is on top */
+        }
+
         .intro-box h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
@@ -282,6 +286,22 @@
 
         // Event listener for scroll
         document.addEventListener('scroll', handleScroll);
+
+        // Function to handle fade-in animation for the introduction box
+        function handleIntroFadeIn() {
+            const introBox = document.querySelector('.intro-box');
+            const elementPosition = introBox.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.2; // Adjust scroll position for triggering
+
+            if (elementPosition < screenPosition) {
+                introBox.style.opacity = '1';
+                introBox.style.transform = 'translateY(0)';
+            }
+        }
+
+        // Event listener for scroll to handle introduction box fade-in
+        document.addEventListener('scroll', handleIntroFadeIn);
+        window.addEventListener('load', handleIntroFadeIn); // Ensure it fades in on page load
     </script>
 </body>
 </html>

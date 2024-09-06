@@ -151,6 +151,7 @@
             border-radius: 5px;
             padding: 15px;
             z-index: 1000;
+            transition: opacity 0.3s ease; /* Smooth transition for visibility */
         }
 
         #nav-menu a {
@@ -270,6 +271,7 @@
 
         // Event listener for scroll
         document.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll); // Ensure fade-in happens on page load
     </script>
 </body>
 </html>
