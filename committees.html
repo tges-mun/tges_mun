@@ -123,25 +123,26 @@
             margin: 10px;
         }
 
+        /* Updated button styles */
         .committee-list .committee-btn {
             display: inline-block;
             padding: 20px 40px;
             font-size: 1.2em;
             font-weight: bold;
-            color: #c5a47e;
-            border: 3px solid #c5a47e;
+            color: #002642; /* Prussian blue text color */
+            border: 3px solid #c5a47e; /* Gold border */
             border-radius: 5px;
-            background-color: transparent;
+            background-color: #c5a47e; /* Solid gold fill */
             cursor: pointer;
-            transition: background-color 0.3s ease, opacity 2s ease-in-out;
+            transition: background-color 0.3s ease, color 0.3s ease, opacity 2s ease-in-out;
             opacity: 0;
             animation: slide-up-fade-in 2s ease-in-out forwards;
             animation-delay: 0.5s;
         }
 
         .committee-list .committee-btn:hover {
-            background-color: #c5a47e;
-            color: #002642;
+            background-color: #ffb560; /* Slightly lighter gold */
+            color: #021727; /* Prussian blue text color on hover */
         }
 
         footer {
