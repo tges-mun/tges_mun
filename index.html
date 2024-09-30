@@ -319,11 +319,17 @@
 
     <script>
         // Countdown Timer
-        const countdownDate = new Date("October 1, 2024 00:00:00").getTime();
+        const countdownDate = new Date("October 1, 2024 08:50:00").getTime();
         
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = countdownDate - now;
+            
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "Being Held";
+                clearInterval(x);
+                return; // Stop the countdown when expired
+            }
             
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -332,15 +338,10 @@
             
             document.getElementById("countdown").innerHTML =
                 days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-            
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
-            }
         }
         
         updateCountdown();
-        setInterval(updateCountdown, 1000);
+        const x = setInterval(updateCountdown, 1000);
 
         // Mobile Menu Toggle
         document.querySelector('.menu-icon').addEventListener('click', function() {
