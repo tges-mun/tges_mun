@@ -293,20 +293,20 @@
     </nav>
 
     <section class="hero-section">
-        <h1>Welcome to TGES Madhapur MUN 2024-25</h1>
-        <h2>Engage. Debate. Achieve.</h2>
-        <p class="welcome-message">Join us for an unforgettable experience at our Model United Nations conference!</p>
+        <h1>Welcome to TGES Madhapur MUN</h1>
+        <h2>Global Agenda, Local Action</h2>
+        <p class="welcome-message">Be part of the solution.</p>
         <a href="registrations.html" class="register-btn">Register Now</a>
     </section>
 
     <section class="countdown-section fade-in">
-        <h2>Session 2</h2>
+        <h2>Mun 2025-26</h2>
         <p id="countdown"></p>
     </section>
 
-    <div class="golden-line-container">
+    <section class="golden-line-container">
         <div class="golden-line"></div>
-    </div>
+    </section>
 
     <section class="venue-section fade-in">
         <h2>Venue Details</h2>
@@ -314,65 +314,61 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Global Edge School MUN | All Rights Reserved</p>
+        <p>&copy; 2024 TGES MUN. All rights reserved.</p>
     </footer>
 
     <script>
-        // Countdown Timer
-        const countdownDate = new Date("October 26, 2024 09:10:00").getTime();
-        
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            
-            if (distance < 0) {
-                document.getElementById("countdown").innerHTML = "Being Held";
-                clearInterval(x);
-                return; // Stop the countdown when expired
-            }
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
-            document.getElementById("countdown").innerHTML =
-                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-        }
-        
-        updateCountdown();
-        const x = setInterval(updateCountdown, 1000);
+        document.addEventListener('DOMContentLoaded', function() {
+            const countdownDate = new Date("October 26, 2024 09:10:00").getTime();
+            const countdownElement = document.getElementById("countdown");
 
-        // Mobile Menu Toggle
-        document.querySelector('.menu-icon').addEventListener('click', function() {
-            this.classList.toggle('open');
-            document.querySelector('.nav-menu').classList.toggle('show');
-        });
+            // Update the countdown every second
+            const countdownInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
 
-        // Intersection Observer for Scroll Animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+                // If the countdown has finished
+                if (distance < 0) {
+                    countdownElement.innerHTML = "Event Coming Soon!";
+                    clearInterval(countdownInterval);
+                    return;
                 }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+
+            // IntersectionObserver for fade-in effect
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Trigger when 50% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Target the fade-in sections
+            document.querySelectorAll('.fade-in').forEach(section => {
+                observer.observe(section);
             });
-        }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-
-        // Fade-in animation for the hero section and body text on load
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.hero-section h1, .hero-section h2, .hero-section .welcome-message, .hero-section .register-btn').forEach(el => {
-                el.classList.add('visible');
+            // Mobile menu toggle
+            const menuIcon = document.querySelector('.menu-icon');
+            const navMenu = document.querySelector('.nav-menu');
+            menuIcon.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+                menuIcon.classList.toggle('open');
             });
         });
     </script>
